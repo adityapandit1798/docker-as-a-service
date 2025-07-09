@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-same-namespace
+  namespace: user66
+spec:
+  podSelector: {}
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          tenant: "user66"
+      podSelector: {}
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          tenant: "user66"
+      podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress

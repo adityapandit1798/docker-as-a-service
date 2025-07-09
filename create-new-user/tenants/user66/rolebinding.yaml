@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: user66-binding
+  namespace: user66
+subjects:
+- kind: ServiceAccount
+  name: user66-sa
+  namespace: user66
+roleRef:
+  kind: Role
+  name: user66-role
+  apiGroup: rbac.authorization.k8s.io

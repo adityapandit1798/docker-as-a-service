@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: user11-limit-range
+  namespace: user11
+spec:
+  limits:
+  - type: Container
+    max:
+      memory: "512Mi"
+      cpu: "500m"
+    min:
+      memory: "64Mi"
+      cpu: "100m"

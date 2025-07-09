@@ -1,0 +1,9 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: user66-role
+  namespace: user66
+rules:
+- apiGroups: ["", "apps", "networking.k8s.io"]
+  resources: ["pods", "services", "deployments", "ingresses", "pvc", "secrets", "configmaps"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]

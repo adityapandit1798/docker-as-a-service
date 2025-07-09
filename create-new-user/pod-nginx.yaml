@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  namespace: user66
+  labels:
+    name: nginx-pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+      - containerPort: 80
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+      runAsNonRoot: true
+      seccompProfile:
+        type: RuntimeDefault
+  securityContext:
+    runAsUser: 1003   # Replace with actual UID of user66
+    runAsGroup: 1003  # Replace with actual GID of user66
+    fsGroup: 1003     # Ensure correct file system group ownership
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
